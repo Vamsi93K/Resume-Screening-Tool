@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract Keywords from JD</title>
+</head>
+<body>
+    <h2>Paste Job Description</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="title">Role Title:</label><br>
+        <input type="text" name="title" required><br><br>
+
+        <label for="text">Job Description:</label><br>
+        <textarea name="text" rows="10" cols="80" required></textarea><br><br>
+
+        <button type="submit">Extract Keywords</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Role Keyword Profile</title>
+</head>
+<body>
+    <h2>Save Keyword Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="role">Role Name:</label><br>
+        <input type="text" name="role" required><br><br>
+
+        <label for="keywords">Keywords (comma-separated):</label><br>
+        <input type="text" name="keywords" required><br><br>
+
+        <button type="submit">Save Profile</button>
+    </form>
+</body>
+</html>

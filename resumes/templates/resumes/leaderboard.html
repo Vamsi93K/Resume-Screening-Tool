@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Leaderboard</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f4f4f4; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #0078D4; color: white; }
+        h2 { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Resume Leaderboard</h2>
+    <table>
+        <tr>
+            <th>Filename</th>
+            <th>Score</th>
+            <th>Matched Keywords</th>
+        </tr>
+        {% for resume in resumes %}
+        <tr>
+            <td>{{ resume.file.name }}</td>
+            <td>{{ resume.score }}%</td>
+            <td>{{ resume.matched_keywords|join:", " }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

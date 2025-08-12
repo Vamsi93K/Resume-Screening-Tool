@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Results</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+        .resume-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .score { font-weight: bold; color: #2c3e50; }
+        .keywords { margin-top: 10px; }
+        .keyword-tag { display: inline-block; background-color: #dfe6e9; padding: 5px 10px; margin: 2px; border-radius: 12px; font-size: 0.9em; }
+        .nav { margin-bottom: 20px; }
+        .nav a { margin-right: 10px; color: #3498db; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <h1>Resume Scoring Results</h1>
+    
+    <div class="nav">
+        <a href="{% url 'upload' %}">🔁 Upload More</a>
+        <a href="{% url 'dashboard' %}">📊 Dashboard</a>
+        <a href="{% url 'leaderboard' %}">🏆 Leaderboard</a>
+    </div>
+
+    {% if resumes %}
+        {% for resume in resumes %}
+            <div class="resume-card">
+                <p><strong>Filename:</strong> {{ resume.file.name }}</p>
+                <p class="score">Score: {{ resume.score }}</p>
+                <div class="keywords">
+                    <strong>Matched Keywords:</strong><br>
+                    {% for keyword in resume.matched_keywords %}
+                        <span class="keyword-tag">{{ keyword }}</span>
+                    {% empty %}
+                        <p>No keywords matched.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recent uploads found. Try uploading resumes again from the <a href="{% url 'upload' %}">Upload Page</a>.</p>
+    {% endif %}
+
+</body>
+</html>
